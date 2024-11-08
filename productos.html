@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbería 82 - La mejor experiencia en barbería</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Fondo de barbería */
+        body {
+            background: linear-gradient(to right, #333, #111);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        .navbar .navbar-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .navbar-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar .navbar-links a:hover {
+            color: #f8c146;
+        }
+
+        /* Sidebar para filtros */
+        .sidebar {
+            padding: 20px;
+            background-color: rgba(51, 51, 51, 0.8);
+            width: 220px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+
+        .sidebar hr {
+            border: 0;
+            height: 1px;
+            background: #333;
+            margin: 20px 0;
+        }
+
+        /* Slider de rango de precio */
+        #priceFilter {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        #priceValue {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* Grid de productos */
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            margin-left: 250px; /* Ajustar espacio para sidebar */
+        }
+
+        /* Tarjeta de producto */
+        .product-card {
+            width: 200px;
+            padding: 10px;
+            background-color: rgba(19, 18, 18, 0.95);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-links">
+            <a href="lomejor.html"><i class="fas fa-cut"></i> Lo mejor de..</a>
+            <a href="promos.html"><i class="fas fa-tags"></i> Promociones</a>
+        </div>
+        <a href="index.html">
+            <img src="img/logo.jpeg" alt="Logo de la Barbería" class="logo">
+        </a>
+        <div class="navbar-links">
+            <a href="https://www.facebook.com/tu_pagina" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="https://www.instagram.com/tu_perfil" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.tiktok.com/@tu_usuario" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+        </div>
+    </nav>
+
+    <div class="container" style="display: flex; margin-top: 100px;">
+        <!-- Sidebar para filtros -->
+        <div class="sidebar">
+            <h3>Filtrar Productos</h3>
+            <label>Precio:</label>
+            <div style="display: flex; align-items: center;">
+                <input type="number" id="minPrice" placeholder="$ 0" min="0" style="width: 60px; margin-right: 5px;" oninput="updateFilters()">
+                <span>a</span>
+                <input type="number" id="maxPrice" placeholder="$ 500" min="0" style="width: 60px; margin-left: 5px;" oninput="updateFilters()">
+            </div>
+            <hr>
+            <label>Tipo de Producto:</label>
+            <select id="typeFilter" onchange="updateFilters()">
+                <option value="all">Todos</option>
+                <option value="pomada">Pomada para peinar</option>
+                <option value="balsamo">Bálsamo para barba</option>
+            </select>
+            <hr>
+            <label>Marca:</label>
+            <select id="brandFilter" onchange="updateFilters()">
+                <option value="all">Todas</option>
+                <option value="capital">Capital Grooming</option>
+                <option value="donporfirio">Don Porfirio</option>
+            </select>
+        </div>
+    
+        <!-- Grid de productos -->
+        <div id="productGrid" class="product-grid"></div>
+    </div>
+    
+    <script>
+        const products = [
+            { id: 1, name: 'Pomada Clásica', brand: 'capital', type: 'pomada', price: 320, available: true, img: 'img/p1.webp' },
+            { id: 2, name: 'Pomada Mate', brand: 'capital', type: 'pomada', price: 320, available: true, img: 'img/po.png' },
+            { id: 3, name: 'Bálsamo Lavanda', brand: 'donporfirio', type: 'balsamo', price: 420, available: true, img: 'img/pom.webp' },
+            { id: 4, name: 'Beard Balm', brand: 'mansface', type: 'balsamo', price: 320, available: true, img: 'img/pom3.webp' },
+            { id: 1, name: 'Pomada Clásica', brand: 'capital', type: 'pomada', price: 320, available: true, img: 'img/pom4.webp' },
+            { id: 2, name: 'Pomada Mate', brand: 'capital', type: 'pomada', price: 320, available: true, img: 'img/po.png' },
+            { id: 3, name: 'Bálsamo Lavanda', brand: 'donporfirio', type: 'balsamo', price: 420, available: true, img: 'img/pom.webp' },
+            { id: 4, name: 'Beard Balm', brand: 'mansface', type: 'balsamo', price: 320, available: true, img: 'img/p4.webp' }
+        ];
+    
+        function updateFilters() {
+            const minPrice = document.getElementById('minPrice').value;
+            const maxPrice = document.getElementById('maxPrice').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            const brandFilter = document.getElementById('brandFilter').value;
+    
+            const filteredProducts = products.filter(product => {
+                const withinPriceRange = 
+                    (minPrice === '' || product.price >= minPrice) && 
+                    (maxPrice === '' || product.price <= maxPrice);
+                const matchesType = typeFilter === 'all' || product.type === typeFilter;
+                const matchesBrand = brandFilter === 'all' || product.brand === brandFilter;
+    
+                return withinPriceRange && matchesType && matchesBrand;
+            });
+    
+            displayProducts(filteredProducts);
+        }
+    
+        function displayProducts(productList) {
+            const productGrid = document.getElementById('productGrid');
+            productGrid.innerHTML = '';
+            productList.forEach(product => {
+                const productCard = `
+                    <div class="product-card">
+                        <img src="${product.img}" alt="${product.name}">
+                        <h4>${product.name}</h4>
+                        <p>Marca: ${product.brand}</p>
+                        <p>Precio: $${product.price}</p>
+                    </div>
+                `;
+                productGrid.insertAdjacentHTML('beforeend', productCard);
+            });
+        }
+    
+        document.addEventListener('DOMContentLoaded', updateFilters);
+    </script>
+    

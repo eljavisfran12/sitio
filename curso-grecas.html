@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbería 82 - La mejor experiencia en barbería</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        .navbar .navbar-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .navbar-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar .navbar-links a:hover {
+            color: #f8c146;
+        }
+
+        /* Sidebar para filtros */
+        .sidebar {
+            padding: 20px;
+            background-color: rgba(51, 51, 51, 0.8);
+            width: 220px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+
+        .sidebar hr {
+            border: 0;
+            height: 1px;
+            background: #333;
+            margin: 20px 0;
+        }
+
+        /* Slider de rango de precio */
+        #priceFilter {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        #priceValue {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* Grid de productos */
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            margin-left: 250px; /* Ajustar espacio para sidebar */
+        }
+
+        /* Tarjeta de producto */
+        .product-card {
+            width: 200px;
+            padding: 10px;
+            background-color: rgba(19, 18, 18, 0.95);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-links">
+            <a href="lomejor.html"><i class="fas fa-cut"></i> Lo mejor de..</a>
+            <a href="promos.html"><i class="fas fa-tags"></i> Promociones</a>
+        </div>
+        <a href="index.html">
+            <img src="img/logo.jpeg" alt="Logo de la Barbería" class="logo">
+        </a>
+        <div class="navbar-links">
+            <a href="https://www.facebook.com/tu_pagina" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="https://www.instagram.com/tu_perfil" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.tiktok.com/@tu_usuario" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+        </div>
+    </nav>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Diseño de Grecas en Corte de Cabello</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Fuente y Color de Fondo */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background: url('barbershop-background.jpg') center center/cover no-repeat fixed;
+            position: relative;
+        }
+
+        /* Overlay para oscurecer el fondo */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+        .carousel {
+    max-width: 600px;
+    margin: 100px auto 2em auto; /* Ajusta el valor para mover el carrusel hacia abajo */
+    overflow: hidden;
+}
+
+        .carousel img {
+            width: 100%;
+            height: 300px; /* Altura fija para mantener el tamaño uniforme */
+            object-fit: cover; /* Recorta las imágenes para que llenen el espacio */
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease;
+        }
+        .carousel img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Sección de Contenido */
+        section {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        section:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Estilo de Botón */
+        .cta-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-top: 1em;
+        }
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Títulos y Textos */
+        h2 {
+            font-weight: 600;
+            font-size: 1.8em;
+            margin-top: 0;
+        }
+        p {
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        /* Ajustes responsivos */
+        @media (max-width: 768px) {
+            .carousel {
+                max-width: 90%; /* Reduce el ancho en pantallas pequeñas */
+            }
+            .carousel img {
+                height: 200px; /* Ajusta la altura en dispositivos pequeños */
+            }
+            section {
+                padding: 15px;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <!-- Carousel de Imágenes del Curso -->
+    <div class="carousel">
+        <div><img src="img/sem1.jpeg" alt="Curso de Grecas 1"></div>
+        <div><img src="img/sem2.jpg" alt="Curso de Grecas 2"></div>
+        <div><img src="img/sem3.jpg" alt="Curso de Grecas 3"></div>
+        <div><img src="img/sem4.jpg" alt="Curso de Grecas 2"></div>
+        <div><img src="img/sem5.jpg" alt="Curso de Grecas 3"></div>
+    </div>
+
+    <!-- Sección de Introducción del Curso -->
+    <section>
+        <h2>Introducción al Curso</h2>
+        <p>Este curso está diseñado para barberos y estilistas que desean aprender a realizar diseños de grecas de alta calidad en cortes de cabello. Aprenderás técnicas avanzadas y consejos de expertos.</p>
+        <a href="#" class="cta-button">Inscríbete Ahora</a>
+    </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        // Inicialización del Carrusel
+        $('.carousel').slick({
+            autoplay: true,
+            autoplaySpeed: 3000,
+            fade: true,
+            arrows: false
+        });
+    </script>
+</body>
+</html>
+
+    <!-- Sección de Introducción del Curso -->
+    
+        <section class="course-intro">
+            <h2>Introducción al Curso</h2>
+            <p>Este curso de diseño de grecas está diseñado para barberos y estilistas que desean mejorar sus habilidades y ofrecer diseños únicos y modernos. Aprenderás técnicas y estilos que están en tendencia para personalizar cortes de cabello con diseños de grecas, líneas y figuras, adaptados al gusto del cliente.</p>
+        </section>
+    
+        <section class="course-content">
+            <h2>Contenido del Curso</h2>
+            <ul>
+                <li>Fundamentos del Diseño de Grecas</li>
+                <li>Herramientas y Materiales</li>
+                <li>Técnicas de Dibujo y Estilo</li>
+                <li>Prácticas en Maniquíes y Modelos</li>
+                <li>Innovación y Personalización</li>
+            </ul>
+        </section>
+    
+        <section class="course-benefits">
+            <h2>Beneficios del Curso</h2>
+            <ul>
+                <li>Perfeccionamiento de Habilidades</li>
+                <li>Ampliación de Servicios</li>
+                <li>Certificación Profesional</li>
+            </ul>
+        </section>
+    
+        <section class="course-duration">
+            <h2>Duración del Curso</h2>
+            <p>Modalidad Intensiva: 1 semana con sesiones diarias de 4 horas.</p>
+            <p>Modalidad Regular: 3 semanas, con 2 sesiones semanales de 3 horas.</p>
+        </section>
+    
+        <section class="course-requirements">
+            <h2>Requisitos</h2>
+            <ul>
+                <li>Experiencia básica en barbería o estilismo.</li>
+                <li>Herramientas propias: Máquina de corte, tijeras y navajas.</li>
+            </ul>
+        </section>
+    
+        <section class="course-material">
+            <h2>Material Incluido</h2>
+            <ul>
+                <li>Manual del curso con imágenes y descripciones detalladas.</li>
+                <li>Acceso a videos y tutoriales adicionales.</li>
+                <li>Kit de práctica que incluye plantillas para diseños de grecas.</li>
+            </ul>
+        </section>
+        <section class="course-instructors">
+            <h2>Instructores</h2>
+            <p>Instructor Principal: Diego Torres, barbero con más de 10 años de experiencia en diseño de cortes personalizados.</p>
+            <p>Asistente: Marta López, especialista en técnicas de diseño moderno.</p>
+            <a href="our.html" class="cta-button">Nuestros Instructores</a>
+        </section>
+        
+    
+        <section class="course-testimonials">
+            <h2>Testimonios de Estudiantes</h2>
+            <blockquote class="testimonial">
+                <p>“Este curso me ayudó a perfeccionar mi técnica y a atraer nuevos clientes interesados en diseños únicos.”</p>
+                <footer>- Carlos M.</footer>
+            </blockquote>
+            <blockquote class="testimonial">
+                <p>“Los instructores son pacientes y expertos; aprendí mucho y ahora hago diseños increíbles.”</p>
+                <footer>- Lucía G.</footer>
+            </blockquote>
+        </section>
+    
+        <section class="course-registration">
+            <h2>Inscripción y Costo</h2>
+            <p>Costo del curso: $1,200 MXN</p>
+            <p>Inscripción: Puedes inscribirte en línea o en la recepción de nuestra barbería.</p>
+            <a href="https://wa.me/5614992142" class="cta-button" target="_blank">¡Inscríbete ahora!</a>
+        </section>
+        
+    
+        <section class="course-contact">
+            <h2>Contacto</h2>
+            <p>Para más información, contáctanos a través de:</p>
+            <p>Teléfono: 5614992142</p>
+            <p>Email: <a href="mailto:franjavis511@gmail.com">franjavis511@gmail.com</a></p>
+        </section>
+    
+        <section class="course-location">
+            <h2>Ubicación y Horarios</h2>
+            <p>Ubicación: Barbería 82, Av. Juárez Sur, Nacozari, Tizayuca, Hgo.</p>
+            <p>Horarios de clase: Consulta con nuestro equipo los horarios disponibles.</p>
+        </section>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        // Inicialización del Carrusel
+        $('.carousel').slick({
+            autoplay: true,
+            autoplaySpeed: 3000,
+            fade: true,
+            arrows: false
+        });
+    </script>
+</body>
+</html>
